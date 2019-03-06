@@ -1,0 +1,21 @@
+{% extends "hrapp/base.html" %}
+{% load static %}
+{% block content %}
+
+<ul class = 'logo'>
+  <li class = 'logo1'><img src="{% static "images/logo.png" %}" alt="Tech News" width = '30px' height = '23px' /></li>
+  <li class = 'logo1'><a class = 'logo2' href="/profile"><b>TECH BUZZ</b></a></li></li>
+  <li class = 'logo1' style="float:right"><a class = 'logo2' href="/logout">Logout</a></li>
+  <li class = 'logo1' style="float:right"><a href = "/profile">Home&nbsp;&nbsp;</a></li>
+</ul>
+<br>
+<div class = "container" align = 'center' >
+<p class = "border" style="width:50%">Username&nbsp;&nbsp;:&nbsp;&nbsp;{{ user }}</p>
+<p class = "border" style="width:50%">First Name&nbsp;&nbsp;:&nbsp;&nbsp;{{ user.first_name }}</p>
+<p class = "border" style="width:50%">Last Name&nbsp;&nbsp;:&nbsp;&nbsp;{{ user.last_name }}</p>
+<p class = "border" style="width:50%">Bio&nbsp;&nbsp;:&nbsp;&nbsp;{{ user.userprofile.bio }}</p>
+<br>
+<a href = "/edit"><button class="btn btn-success">Edit Profile</button></a>
+</div>
+<br>	
+{% endblock %}

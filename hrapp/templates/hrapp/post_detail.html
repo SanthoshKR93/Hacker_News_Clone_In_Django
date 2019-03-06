@@ -1,0 +1,79 @@
+{% extends "hrapp/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<ul class = 'logo'>
+  <li class = 'logo1'><img src="{% static "images/logo.png" %}" alt="Tech News" width = '30px' height = '23px' /></li>
+  <li class = 'logo1'><a class = 'logo2' href="/profile"><b>TECH BUZZ</b></a></li></li>
+<li class = 'logo1'><a class = 'logo2' href="/create">create</a></li>
+    <li class = 'logo1'><a class = 'logo2' href="/submissions">submissions</a></li>
+  <li class = 'logo1' style="float:right"><a class = 'logo2' href="/logout/">Logout</a></li>
+  <li class = 'logo1' style="float:right"><a href = "/profile">Home&nbsp;&nbsp;</a></li>
+</ul>
+<div class = "container" align = 'center'>
+<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+<h6><a href="{{ post.domain }}">({{ post.domain }})</a></h6>
+
+<h5>Submitted by <a href='/detail'>{{ post.author }}</a></h5>
+<h6>({{ post.votes }} votes)</h6>
+<hr class = "lineb">
+<br>
+<div class="desc">
+ <h5> {{ post.description }} </h5>
+</div>
+<br>
+<hr class = "lineb">
+</div>
+<div class = "container">
+<div class ="main-comment-section">
+
+<div class="container-fluid mt-2">
+<div class="form-group row">
+<legend>Comment</legend>
+  <form method="post"">
+  {% csrf_token %}
+  {{ comment_form|crispy }} 
+  <button class = "btn btn-outline-success" type="submit">Submit</button>
+</form> 
+</div>
+</div>
+
+{{ comments.count }} Comment{{ comments|pluralize }}
+{% for comment in comments %}
+
+<blockquote class = "me">
+  <p class = "sm">{{ comment.content }} </p>
+  <footer class ="me" >by {{ comment.user|capfirst }}
+  <button type="button" name="button" class="reply-btn btn btn-light btn-sm ml-2">replies</button>
+  </footer>
+</blockquote>
+
+<div class="replied-comments" style="display: none;">
+{% for reply in comment.replies.all %}
+
+<blockquote class = "">
+  <p class="sm"> {{ reply.content }} </p>
+  <footer>by {{ reply.user|capfirst }}</footer>
+</blockquote>
+
+{% endfor %}
+<div class="form-group row">
+<legend class="sm">Reply</legend>
+<form method="post">
+{% csrf_token %}
+<input type="hidden" name="comment_id" value="{{ comment.id }}">
+{{ comment_form|crispy }}
+
+<button class = "btn btn-outline-success" type="submit">Submit</button>
+  
+</form>
+  
+</div>
+  
+
+</div>
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}

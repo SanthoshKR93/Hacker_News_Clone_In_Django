@@ -1,0 +1,25 @@
+{% extends "hrapp/base.html" %}
+{% load static %}
+{% block content %}
+
+<ul class = 'logo'>
+  <li class = 'logo1'><img src="{% static "images/logo.png" %}" alt="Tech News" width = '30px' height = '23px' /></li>
+  <li class = 'logo1'><a class = 'logo2' href="/"><b>TECH BUZZ</b></a></li></li>
+</ul>
+<br>
+<div class = 'container' align = 'center'>
+<h3><b>Login</b></h3>
+<br>
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post"">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class = "btn btn-success" type="submit">Login</button>
+</form>
+<a href='/register'>Create an Account</a>
+</div>
+<br>
+{% endblock %}

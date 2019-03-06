@@ -1,0 +1,31 @@
+jQuery(document).ready(function($) 
+    {
+	$(".vote_form").submit(function(e) 
+		{
+		    e.preventDefault(); 
+		    var btn = $("button", this);
+		    var l_id = $(".hidden_id", this).val();
+		    btn.attr('disabled', true);
+		    $.post("/vote/", $(this).serializeArray(),
+			  function(data) {
+			      if(data["voteobj"]) {
+			      	
+                     $("#v1").attr('class', 'glyphicon glyphicon-chevron-down');
+                     e.location.reload(true);			      
+                 }
+			      else {
+				  $(".v1").attr("src", "glyphicon glyphicon-chevron-up");
+				  e.location.reload(true);
+			      }
+			  });
+		    btn.attr('disabled', false);
+		});
+    });
+
+
+
+
+
+&nbsp;&nbsp;<button id = "v1" class="glyphicon glyphicon-chevron-up" type="submit"></button>&nbsp;&nbsp;
+{% else %}
+&nbsp;&nbsp;<button id = "v2" class="glyphicon glyphicon-chevron-down" type="submit"></button>&nbsp;&nbsp;

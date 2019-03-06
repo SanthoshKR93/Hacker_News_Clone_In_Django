@@ -1,0 +1,16 @@
+{% extends "hrapp/base.html" %}
+{% load static %}
+{% block content %}
+
+<ul class = 'logo'>
+  <li class = 'logo1'><img src="{% static "images/logo.png" %}" alt="Tech News" width = '30px' height = '23px' /></li>
+  <li class = 'logo1'><a class = 'logo2' href="/"><b>TECH BUZZ</b></a></li></li>
+  <li class = 'logo1' style="float:right"><a class = 'logo2' href="/login">Login</a></li>
+  <li class = 'logo1' style="float:right"><a class = 'logo2' href="/">Home</a></li>
+</ul>
+<br>
+<div class = 'container' align = 'center'>
+<h4>Logged Out Successfully..</h4>
+<br>
+</div>
+{% endblock %}

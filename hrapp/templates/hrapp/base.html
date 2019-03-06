@@ -1,0 +1,41 @@
+{% load static %}
+<html>
+<head>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>Tech News</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/vote.js' %}"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+  	$('.reply-btn').click(function(){
+    $('.replied-comments').fadeToggle()
+     });
+  	 });
+
+
+  </script>
+  
+</head>
+<body>
+<div class = 'box'>
+{% block content %}
+{% endblock %}
+
+<hr>
+<div class = "container" align = "center">
+<p>Hacker News Clone In Django</p>
+<div class = "sub">
+<a href ="https://github.com/SanthoshKR93/Hacker_News_Clone_In_Django.git">Github</a><h>&nbsp|&nbsp</h><a href = "https://arunrocks.com/building-a-hacker-news-clone-in-django-part-1/">References</a>
+</div>
+</div>
+<br>
+</div>
+</body>
+</html>

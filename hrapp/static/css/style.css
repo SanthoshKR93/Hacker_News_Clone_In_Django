@@ -1,0 +1,97 @@
+ @import url('https://fonts.googleapis.com/css?family=Exo:500');
+
+body {
+background-color:white;
+}
+.box{
+width:88%;
+margin-left:6%;
+margin-top:8px;
+background-color:#f6f6ef;
+}
+
+ a:hover, a:focus, a:active {
+      text-decoration: none;
+      color: inherit;
+ }
+
+.border {
+  list-style-position:inside;
+  position: relative;
+  padding: 5px 10px;
+  margin-left:-3.6%;
+  border: 1px solid #ddddd2;
+  font:Verdana, Geneva, sans-serif;
+}
+.logo {
+  cursor: pointer;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ff6600;
+}
+
+.logo1 {
+  cursor: pointer;
+  float: left;
+  border-right:1px solid black;
+}
+
+.logo2 {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: .5px 10px;
+  text-decoration: none;
+  font-size:14px;
+  font:Verdana, Geneva, sans-serif;
+}
+
+.btn1 {
+display:block;
+text-align:center;
+margin-left:43%;
+width:120px;
+height:37px;
+}
+.pagination {
+text-align:center;
+}
+
+
+.sub {
+font-size:12px;
+}
+
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 2px;
+  color:#ff8800;
+} 
+
+.sm {
+  font-size: smaller;
+}
+
+.lineb {
+display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  color:black;
+
+}
+
+span {
+
+  opacity: 0.8;
+}

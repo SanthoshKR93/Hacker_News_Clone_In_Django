@@ -1,0 +1,55 @@
+{% extends "hrapp/base.html" %}
+{% load static %}
+
+{% block content %}
+<ul class = 'logo'>
+  <li class = 'logo1'><img src="{% static "images/logo.png" %}" alt="Tech News" width = '30px' height = '23px' /></li>
+  <li class = 'logo1'><a class = 'logo2' href="."><b>TECH BUZZ</b></a></li>
+    <li class = 'logo1'><a class = 'logo2' href="/create">create</a></li>
+    <li class = 'logo1'><a class = 'logo2' href="/submissions">submissions</a></li>
+  <li class = 'logo1' style="float:right"><a class = 'logo2' href="/logout/">Logout</a></li>
+  <li class = 'logo1' style="float:right"><h>welcome&nbsp;</h><a href = "/detail">{{ user }}&nbsp;&nbsp;</a></li>
+</ul>
+{% if is_paginated %}
+<ol start = "{{page_obj.start_index}}">
+{% else %}
+<ol>
+{% endif %}
+{% for link in object_list %}
+
+<form method="post" action="{% url 'vote' %}" class="vote_form" >
+<li class = 'border' style="width:103.6%">
+{% csrf_token %}
+<input type="hidden" id = "id_link" name="link" class="hidden_id" value="{{ link.pk }}"/>
+<input type="hidden" id = "id_voter" name="voter" class="hidden_id" value="{{ user.pk }}"/>
+{% if link.pk not in voted %}
+&nbsp;&nbsp;<button id = "v1" class = "btn btn-outline-success" type="submit"><strong>+</strong></button>&nbsp;&nbsp;
+{% else %}
+&nbsp;&nbsp;<button id = "v2" class = "btn btn-outline-success" type="submit"><strong>-</strong></button>&nbsp;&nbsp;
+{% endif %}
+<a href = "{{ link.url }}"><h>{{ link.title }}</h></a>&nbsp;&nbsp;
+<a href = "."><h class = "sub">({{ link.domain }})</h></a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<h class ="sub">{{ link.votes }} votes</h>&nbsp;
+<a href = "{% url 'post_detail' pk=link.pk %}" class = "sub">by {{ link.author }}</a>&nbsp;&nbsp;
+<a href = "." class = "sub">{{ link.submitted_on }}</a>&nbsp;&nbsp;
+<a href = "{% url 'post_detail' pk=link.pk %}" class = "sub">info</a>&nbsp;&nbsp;
+<a href = "{% url 'post_detail' pk=link.pk %}" class = "sub">comment</a>
+</li>
+</form>
+{% endfor%}
+</ol>
+
+{% if is_paginated %}
+<div class = "container" align = "center">
+{% if page_obj.has_next %}
+<a href ="?page={{ page_obj.next_page_number }}">more&raquo;</a>
+{% endif %}
+
+{% if page_obj.has_previous %}
+
+<a href ="?page={{ page_obj.previous_page_number }}">&nbsp;&laquo;prev</a>
+{% endif %}
+</div>
+{% endif %}
+
+{% endblock %}
